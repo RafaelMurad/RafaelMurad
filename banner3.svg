@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" width="800" height="200">
+  <style>
+    @keyframes cart-move {
+      0% { transform: translateX(-80px); }
+      100% { transform: translateX(820px); }
+    }
+    @keyframes wheel-spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes cargo-bob {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-2px); }
+    }
+    @keyframes smoke1 {
+      0% { transform: translate(0, 0); opacity: 0.8; }
+      100% { transform: translate(-30px, -20px); opacity: 0; }
+    }
+    @keyframes smoke2 {
+      0% { transform: translate(0, 0); opacity: 0.6; }
+      100% { transform: translate(-20px, -25px); opacity: 0; }
+    }
+    @keyframes sparkle {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
+    }
+    @keyframes track-dash {
+      0% { stroke-dashoffset: 0; }
+      100% { stroke-dashoffset: -24; }
+    }
+    .cart { animation: cart-move 14s linear infinite; }
+    .cargo { animation: cargo-bob 0.3s steps(2) infinite; }
+    .smoke-1 { animation: smoke1 1s linear infinite; }
+    .smoke-2 { animation: smoke2 1.2s linear infinite 0.3s; }
+    .sparkle { animation: sparkle 1.5s ease-in-out infinite; }
+    .track { animation: track-dash 0.5s linear infinite; }
+    .pixel-text { font-family: monospace; font-size: 10px; fill: #7D8590; }
+  </style>
+  <rect width="800" height="200" fill="#0d1117"/>
+  <!-- Stars background -->
+  <g opacity="0.3">
+    <rect x="50" y="20" width="2" height="2" fill="#E6EDF3"/>
+    <rect x="150" y="35" width="2" height="2" fill="#E6EDF3"/>
+    <rect x="280" y="15" width="2" height="2" fill="#E6EDF3"/>
+    <rect x="400" y="28" width="2" height="2" fill="#E6EDF3"/>
+    <rect x="520" y="12" width="2" height="2" fill="#E6EDF3"/>
+    <rect x="650" y="32" width="2" height="2" fill="#E6EDF3"/>
+    <rect x="750" y="18" width="2" height="2" fill="#E6EDF3"/>
+    <rect x="100" y="50" width="2" height="2" fill="#E6EDF3"/>
+    <rect x="350" y="45" width="2" height="2" fill="#E6EDF3"/>
+    <rect x="600" y="42" width="2" height="2" fill="#E6EDF3"/>
+  </g>
+  <!-- Rails -->
+  <rect x="0" y="150" width="800" height="3" fill="#484F58"/>
+  <rect x="0" y="160" width="800" height="3" fill="#484F58"/>
+  <line x1="0" y1="150" x2="800" y2="150" stroke="#58A6FF" stroke-width="1" stroke-dasharray="12 12" class="track" opacity="0.3"/>
+  <!-- Rail ties -->
+  <g opacity="0.4">
+    <rect x="20" y="148" width="4" height="18" fill="#30363d"/>
+    <rect x="50" y="148" width="4" height="18" fill="#30363d"/>
+    <rect x="80" y="148" width="4" height="18" fill="#30363d"/>
+    <rect x="110" y="148" width="4" height="18" fill="#30363d"/>
+    <rect x="140" y="148" width="4" height="18" fill="#30363d"/>
+    <rect x="170" y="148" width="4" height="18" fill="#30363d"/>
+    <rect x="200" y="148" width="4" height="18" fill="#30363d"/>
+    <rect x="230" y="148" width="4" height="18" fill="#30363d"/>
+    <rect x="260" y="148" width="4" height="18" fill="#30363d"/>
+    <rect x="290" y="148" width="4" height="18" fill="#30363d"/>
+    <rect x="320" y="148" width="4" height="18" fill="#30363d"/>
+    <rect x="350" y="148" width="4" height="18" fill="#30363d"/>
+    <rect x="380" y="148" width="4" height="18" fill="#30363d"/>
+    <rect x="410" y="148" width="4" height="18" fill="#30363d"/>
+    <rect x="440" y="148" width="4" height="18" fill="#30363d"/>
+    <rect x="470" y="148" width="4" height="18" fill="#30363d"/>
+    <rect x="500" y="148" width="4" height="18" fill="#30363d"/>
+    <rect x="530" y="148" width="4" height="18" fill="#30363d"/>
+    <rect x="560" y="148" width="4" height="18" fill="#30363d"/>
+    <rect x="590" y="148" width="4" height="18" fill="#30363d"/>
+    <rect x="620" y="148" width="4" height="18" fill="#30363d"/>
+    <rect x="650" y="148" width="4" height="18" fill="#30363d"/>
+    <rect x="680" y="148" width="4" height="18" fill="#30363d"/>
+    <rect x="710" y="148" width="4" height="18" fill="#30363d"/>
+    <rect x="740" y="148" width="4" height="18" fill="#30363d"/>
+    <rect x="770" y="148" width="4" height="18" fill="#30363d"/>
+  </g>
+  <!-- Station signs -->
+  <g>
+    <rect x="60" y="170" width="60" height="16" fill="#21262d" rx="2"/>
+    <text x="90" y="182" class="pixel-text" text-anchor="middle" font-size="8">IDEATE</text>
+    <rect x="220" y="170" width="60" height="16" fill="#21262d" rx="2"/>
+    <text x="250" y="182" class="pixel-text" text-anchor="middle" font-size="8">BUILD</text>
+    <rect x="380" y="170" width="60" height="16" fill="#21262d" rx="2"/>
+    <text x="410" y="182" class="pixel-text" text-anchor="middle" font-size="8">TEST</text>
+    <rect x="540" y="170" width="60" height="16" fill="#21262d" rx="2"/>
+    <text x="570" y="182" class="pixel-text" text-anchor="middle" font-size="8">DEPLOY</text>
+    <rect x="700" y="170" width="60" height="16" fill="#21262d" rx="2"/>
+    <text x="730" y="182" class="pixel-text" text-anchor="middle" font-size="8">PROD</text>
+  </g>
+  <!-- Minecart -->
+  <g class="cart">
+    <!-- Smoke -->
+    <g class="smoke-1"><rect x="-10" y="108" width="6" height="6" fill="#484F58" opacity="0.5" rx="3"/></g>
+    <g class="smoke-2"><rect x="-5" y="112" width="4" height="4" fill="#484F58" opacity="0.4" rx="2"/></g>
+    <!-- Cart body -->
+    <polygon points="-5,130 45,130 40,148 0,148" fill="#8B6914"/>
+    <polygon points="-3,132 43,132 39,146 1,146" fill="#D4A017"/>
+    <!-- Rivets -->
+    <rect x="5" y="134" width="2" height="2" fill="#8B6914"/>
+    <rect x="33" y="134" width="2" height="2" fill="#8B6914"/>
+    <!-- Cargo (code blocks) -->
+    <g class="cargo">
+      <rect x="4" y="118" width="14" height="12" fill="#58A6FF" rx="1"/>
+      <text x="6" y="127" font-family="monospace" font-size="7" fill="#fff">&lt;/&gt;</text>
+      <rect x="20" y="116" width="14" height="14" fill="#7EE787" rx="1"/>
+      <text x="22" y="126" font-family="monospace" font-size="7" fill="#0d1117">{..}</text>
+      <rect x="10" y="106" width="12" height="12" fill="#D2A8FF" rx="1"/>
+      <text x="12" y="115" font-family="monospace" font-size="7" fill="#0d1117">fn</text>
+      <!-- Lightbulb on top -->
+      <rect x="24" y="100" width="8" height="8" fill="#F8E3A1"/>
+      <rect x="26" y="96" width="4" height="6" fill="#F8E3A1"/>
+      <g class="sparkle"><rect x="22" y="96" width="2" height="2" fill="#F8E3A1"/></g>
+      <g class="sparkle" style="animation-delay:0.5s"><rect x="32" y="98" width="2" height="2" fill="#F8E3A1"/></g>
+    </g>
+    <!-- Wheels -->
+    <g style="transform-origin: 8px 152px;" class="wheel-l">
+      <circle cx="8" cy="152" r="6" fill="#484F58"/>
+      <circle cx="8" cy="152" r="2" fill="#30363d"/>
+    </g>
+    <g style="transform-origin: 32px 152px;" class="wheel-r">
+      <circle cx="32" cy="152" r="6" fill="#484F58"/>
+      <circle cx="32" cy="152" r="2" fill="#30363d"/>
+    </g>
+  </g>
+  <!-- Title -->
+  <text x="400" y="40" text-anchor="middle" font-family="monospace" font-size="20" font-weight="bold" fill="#E6EDF3" letter-spacing="2">Rafael Murad</text>
+  <text x="400" y="62" text-anchor="middle" font-family="monospace" font-size="12" fill="#7D8590">mining ideas, shipping code on rails</text>
+</svg>

@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" width="800" height="200">
+  <style>
+    @keyframes drone-fly {
+      0% { transform: translate(-60px, 0); }
+      48% { transform: translate(370px, 0); }
+      52% { transform: translate(370px, 0); }
+      100% { transform: translate(830px, 0); }
+    }
+    @keyframes prop-spin {
+      0% { transform: scaleX(1); }
+      50% { transform: scaleX(0.2); }
+      100% { transform: scaleX(1); }
+    }
+    @keyframes package-swing {
+      0%, 100% { transform: rotate(-2deg); }
+      50% { transform: rotate(2deg); }
+    }
+    @keyframes drop-zone-pulse {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 0.5; }
+    }
+    @keyframes signal {
+      0% { r: 3; opacity: 0.8; }
+      100% { r: 15; opacity: 0; }
+    }
+    @keyframes scan-line {
+      0% { transform: translateY(-200px); }
+      100% { transform: translateY(200px); }
+    }
+    @keyframes blink-cursor {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    .drone { animation: drone-fly 12s ease-in-out infinite; }
+    .prop { animation: prop-spin 0.1s linear infinite; transform-origin: center; }
+    .package { animation: package-swing 1s ease-in-out infinite; transform-origin: top center; }
+    .drop-zone { animation: drop-zone-pulse 2s ease-in-out infinite; }
+    .signal { animation: signal 1.5s linear infinite; }
+    .cursor { animation: blink-cursor 1s steps(1) infinite; }
+    .pixel-text { font-family: monospace; font-size: 10px; fill: #7D8590; }
+  </style>
+  <rect width="800" height="200" fill="#0d1117"/>
+  <!-- Grid overlay -->
+  <g opacity="0.05">
+    <line x1="0" y1="50" x2="800" y2="50" stroke="#58A6FF" stroke-width="1"/>
+    <line x1="0" y1="100" x2="800" y2="100" stroke="#58A6FF" stroke-width="1"/>
+    <line x1="0" y1="150" x2="800" y2="150" stroke="#58A6FF" stroke-width="1"/>
+    <line x1="200" y1="0" x2="200" y2="200" stroke="#58A6FF" stroke-width="1"/>
+    <line x1="400" y1="0" x2="400" y2="200" stroke="#58A6FF" stroke-width="1"/>
+    <line x1="600" y1="0" x2="600" y2="200" stroke="#58A6FF" stroke-width="1"/>
+  </g>
+  <!-- Ground/delivery zones -->
+  <rect x="0" y="170" width="800" height="30" fill="#161b22"/>
+  <rect x="0" y="170" width="800" height="2" fill="#21262d"/>
+  <!-- Drop zone markers -->
+  <g>
+    <rect x="80" y="155" width="40" height="2" fill="#58A6FF" class="drop-zone"/>
+    <rect x="95" y="155" width="10" height="2" fill="#58A6FF" class="drop-zone"/>
+    <text x="100" y="190" class="pixel-text" text-anchor="middle" font-size="8">INTAKE</text>
+    <circle cx="100" cy="162" r="3" fill="none" stroke="#58A6FF" stroke-width="1" class="signal"/>
+  </g>
+  <g>
+    <rect x="230" y="155" width="40" height="2" fill="#7EE787" class="drop-zone" style="animation-delay:0.5s"/>
+    <text x="250" y="190" class="pixel-text" text-anchor="middle" font-size="8">BUILD</text>
+    <circle cx="250" cy="162" r="3" fill="none" stroke="#7EE787" stroke-width="1" class="signal" style="animation-delay:0.5s"/>
+  </g>
+  <g>
+    <rect x="380" y="155" width="40" height="2" fill="#D2A8FF" class="drop-zone" style="animation-delay:1s"/>
+    <text x="400" y="190" class="pixel-text" text-anchor="middle" font-size="8">TEST</text>
+    <circle cx="400" cy="162" r="3" fill="none" stroke="#D2A8FF" stroke-width="1" class="signal" style="animation-delay:1s"/>
+  </g>
+  <g>
+    <rect x="530" y="155" width="40" height="2" fill="#FF7B72" class="drop-zone" style="animation-delay:1.5s"/>
+    <text x="550" y="190" class="pixel-text" text-anchor="middle" font-size="8">STAGE</text>
+    <circle cx="550" cy="162" r="3" fill="none" stroke="#FF7B72" stroke-width="1" class="signal" style="animation-delay:1.5s"/>
+  </g>
+  <g>
+    <rect x="680" y="155" width="40" height="2" fill="#F8E3A1" class="drop-zone" style="animation-delay:2s"/>
+    <text x="700" y="190" class="pixel-text" text-anchor="middle" font-size="8">DELIVER</text>
+    <circle cx="700" cy="162" r="3" fill="none" stroke="#F8E3A1" stroke-width="1" class="signal" style="animation-delay:2s"/>
+  </g>
+  <!-- Flight path (dotted) -->
+  <line x1="0" y1="105" x2="800" y2="105" stroke="#30363d" stroke-width="1" stroke-dasharray="4 8"/>
+  <!-- Drone -->
+  <g class="drone">
+    <!-- Package hanging below -->
+    <g class="package">
+      <line x1="20" y1="115" x2="20" y2="130" stroke="#484F58" stroke-width="1"/>
+      <rect x="10" y="130" width="20" height="16" fill="#58A6FF" rx="2"/>
+      <text x="12" y="141" font-family="monospace" font-size="7" fill="#fff">&lt;/&gt;</text>
+      <rect x="14" y="128" width="12" height="4" fill="#1F6FEB"/>
+      <!-- Lightbulb icon on package -->
+      <rect x="27" y="130" width="6" height="6" fill="#F8E3A1" opacity="0.8"/>
+      <rect x="28" y="128" width="4" height="3" fill="#F8E3A1" opacity="0.6"/>
+    </g>
+    <!-- Drone body -->
+    <rect x="10" y="100" width="20" height="12" fill="#484F58" rx="2"/>
+    <rect x="14" y="102" width="12" height="3" fill="#58A6FF" opacity="0.6"/>
+    <rect x="14" y="107" width="4" height="2" fill="#7EE787"/>
+    <rect x="22" y="107" width="4" height="2" fill="#FF7B72"/>
+    <!-- Arms -->
+    <rect x="-4" y="103" width="18" height="3" fill="#30363d"/>
+    <rect x="26" y="103" width="18" height="3" fill="#30363d"/>
+    <!-- Propellers -->
+    <g style="transform-origin: 0px 103px;" class="prop">
+      <rect x="-12" y="100" width="16" height="3" fill="#E6EDF3" rx="1"/>
+    </g>
+    <g style="transform-origin: 40px 103px;" class="prop">
+      <rect x="32" y="100" width="16" height="3" fill="#E6EDF3" rx="1"/>
+    </g>
+  </g>
+  <!-- HUD elements -->
+  <text x="20" y="20" font-family="monospace" font-size="8" fill="#58A6FF" opacity="0.5">SYS:ONLINE</text>
+  <text x="20" y="30" font-family="monospace" font-size="8" fill="#7EE787" opacity="0.5">GPS:LOCKED</text>
+  <rect x="740" y="14" width="8" height="2" fill="#7EE787" opacity="0.5"/>
+  <rect x="750" y="12" width="8" height="4" fill="#7EE787" opacity="0.5"/>
+  <rect x="760" y="10" width="8" height="6" fill="#7EE787" opacity="0.5"/>
+  <rect x="770" y="8" width="8" height="8" fill="#7EE787" opacity="0.5"/>
+  <!-- Title -->
+  <text x="400" y="50" text-anchor="middle" font-family="monospace" font-size="20" font-weight="bold" fill="#E6EDF3" letter-spacing="2">Rafael Murad</text>
+  <text x="400" y="72" text-anchor="middle" font-family="monospace" font-size="12" fill="#7D8590">delivering code, one deploy at a time</text>
+</svg>
