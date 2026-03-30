@@ -1,0 +1,192 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" width="800" height="200">
+  <style>
+    @keyframes walk {
+      0%, 100% { transform: translateX(-60px); }
+      50% { transform: translateX(760px); }
+    }
+    @keyframes bobble {
+      0%, 100% { transform: translateY(0); }
+      25% { transform: translateY(-3px); }
+      50% { transform: translateY(0); }
+      75% { transform: translateY(-3px); }
+    }
+    @keyframes legL {
+      0%, 50%, 100% { transform: translateY(0); }
+      25% { transform: translateY(-2px); }
+    }
+    @keyframes legR {
+      0%, 50%, 100% { transform: translateY(0); }
+      75% { transform: translateY(-2px); }
+    }
+    @keyframes antenna-blink {
+      0%, 90%, 100% { fill: #58A6FF; }
+      95% { fill: #FF6B6B; }
+    }
+    @keyframes float-bit1 {
+      0%, 100% { transform: translate(0px, 0px); opacity: 0.9; }
+      50% { transform: translate(2px, -5px); opacity: 1; }
+    }
+    @keyframes float-bit2 {
+      0%, 100% { transform: translate(0px, 0px); opacity: 0.8; }
+      50% { transform: translate(-2px, -4px); opacity: 1; }
+    }
+    @keyframes float-bit3 {
+      0%, 100% { transform: translate(0px, 0px); opacity: 0.7; }
+      50% { transform: translate(3px, -6px); opacity: 1; }
+    }
+    @keyframes bulb-glow {
+      0%, 100% { opacity: 0; }
+      40%, 60% { opacity: 1; }
+    }
+    @keyframes conveyor-move {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-16px); }
+    }
+    @keyframes eye-blink {
+      0%, 42%, 44%, 100% { height: 4px; }
+      43% { height: 1px; }
+    }
+    .robot-group {
+      animation: walk 12s linear infinite;
+    }
+    .robot-body {
+      animation: bobble 0.4s steps(2) infinite;
+    }
+    .leg-l { animation: legL 0.4s steps(2) infinite; }
+    .leg-r { animation: legR 0.4s steps(2) infinite; }
+    .antenna-tip { animation: antenna-blink 3s steps(1) infinite; }
+    .code-bit-1 { animation: float-bit1 2s ease-in-out infinite; }
+    .code-bit-2 { animation: float-bit2 2.5s ease-in-out infinite 0.3s; }
+    .code-bit-3 { animation: float-bit3 1.8s ease-in-out infinite 0.7s; }
+    .idea-bulb { animation: bulb-glow 12s linear infinite; }
+    .conveyor-seg { animation: conveyor-move 0.5s steps(2) infinite; }
+    .eye { animation: eye-blink 4s steps(1) infinite; }
+    .pixel-text { font-family: monospace; font-size: 10px; fill: #7D8590; }
+  </style>
+
+  <defs>
+    <pattern id="grid" width="8" height="8" patternUnits="userSpaceOnUse">
+      <rect width="8" height="8" fill="#0d1117"/>
+      <rect width="7" height="7" fill="#161b22"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="200" fill="url(#grid)"/>
+
+  <!-- Pipeline / conveyor belt -->
+  <g>
+    <!-- Main belt -->
+    <rect x="0" y="158" width="800" height="4" fill="#30363d" rx="0"/>
+    <rect x="0" y="164" width="800" height="12" fill="#21262d" rx="0"/>
+    <rect x="0" y="176" width="800" height="4" fill="#30363d" rx="0"/>
+    
+    <!-- Conveyor segments (repeating dashes) -->
+    <g class="conveyor-seg">
+      <line x1="0" y1="170" x2="816" y2="170" stroke="#30363d" stroke-width="2" stroke-dasharray="8 8"/>
+    </g>
+
+    <!-- Pipeline labels -->
+    <text x="80" y="195" class="pixel-text" text-anchor="middle">BUILD</text>
+    <text x="250" y="195" class="pixel-text" text-anchor="middle">TEST</text>
+    <text x="420" y="195" class="pixel-text" text-anchor="middle">REVIEW</text>
+    <text x="590" y="195" class="pixel-text" text-anchor="middle">DEPLOY</text>
+    <text x="730" y="195" class="pixel-text" text-anchor="middle">SHIP IT!</text>
+
+    <!-- Pipeline stage markers -->
+    <rect x="160" y="156" width="4" height="24" fill="#58A6FF" opacity="0.3"/>
+    <rect x="330" y="156" width="4" height="24" fill="#58A6FF" opacity="0.3"/>
+    <rect x="500" y="156" width="4" height="24" fill="#58A6FF" opacity="0.3"/>
+    <rect x="660" y="156" width="4" height="24" fill="#58A6FF" opacity="0.3"/>
+  </g>
+
+  <!-- Scattered code bits on the belt (static, decorative) -->
+  <g opacity="0.4">
+    <text x="120" y="155" font-family="monospace" font-size="8" fill="#58A6FF">0</text>
+    <text x="200" y="152" font-family="monospace" font-size="8" fill="#7EE787">1</text>
+    <text x="310" y="155" font-family="monospace" font-size="7" fill="#58A6FF">{}</text>
+    <text x="460" y="153" font-family="monospace" font-size="8" fill="#7EE787">0</text>
+    <text x="550" y="155" font-family="monospace" font-size="7" fill="#58A6FF">&lt;/&gt;</text>
+    <text x="680" y="152" font-family="monospace" font-size="8" fill="#7EE787">1</text>
+  </g>
+
+  <!-- ROBOT GROUP (walks across) -->
+  <g class="robot-group">
+    <g class="robot-body">
+
+      <!-- Shadow -->
+      <ellipse cx="20" cy="157" rx="12" ry="3" fill="#000" opacity="0.3"/>
+
+      <!-- Antenna -->
+      <rect x="18" y="100" width="4" height="10" fill="#484F58"/>
+      <rect class="antenna-tip" x="16" y="96" width="8" height="6" rx="0" fill="#58A6FF"/>
+
+      <!-- Head -->
+      <rect x="8" y="110" width="24" height="20" fill="#58A6FF" rx="0"/>
+      <rect x="10" y="112" width="20" height="16" fill="#1F6FEB" rx="0"/>
+
+      <!-- Eyes -->
+      <rect class="eye" x="13" y="118" width="4" height="4" fill="#E6EDF3"/>
+      <rect class="eye" x="23" y="118" width="4" height="4" fill="#E6EDF3"/>
+
+      <!-- Mouth -->
+      <rect x="15" y="124" width="10" height="2" fill="#E6EDF3"/>
+
+      <!-- Body -->
+      <rect x="10" y="132" width="20" height="16" fill="#484F58" rx="0"/>
+      <rect x="14" y="134" width="4" height="4" fill="#58A6FF" opacity="0.8"/>
+      <rect x="22" y="134" width="4" height="4" fill="#7EE787" opacity="0.8"/>
+      <rect x="14" y="140" width="12" height="2" fill="#58A6FF" opacity="0.4"/>
+      <rect x="14" y="144" width="8" height="2" fill="#58A6FF" opacity="0.3"/>
+
+      <!-- Arms -->
+      <!-- Left arm (carrying code) -->
+      <rect x="2" y="132" width="8" height="4" fill="#484F58"/>
+      <rect x="0" y="126" width="4" height="8" fill="#484F58"/>
+      <!-- Right arm -->
+      <rect x="30" y="132" width="8" height="4" fill="#484F58"/>
+      <rect x="36" y="126" width="4" height="8" fill="#484F58"/>
+
+      <!-- Code bits being carried (floating above left hand) -->
+      <g class="code-bit-1">
+        <text x="-6" y="122" font-family="monospace" font-size="8" fill="#7EE787" font-weight="bold">&lt;/&gt;</text>
+      </g>
+      <g class="code-bit-2">
+        <text x="34" y="120" font-family="monospace" font-size="7" fill="#FF7B72" font-weight="bold">{}</text>
+      </g>
+      <g class="code-bit-3">
+        <text x="10" y="96" font-family="monospace" font-size="7" fill="#D2A8FF" font-weight="bold">fn</text>
+      </g>
+
+      <!-- Idea lightbulb (appears periodically above head) -->
+      <g class="idea-bulb">
+        <rect x="28" y="88" width="12" height="12" fill="#F8E3A1" rx="0"/>
+        <rect x="30" y="84" width="8" height="6" fill="#F8E3A1" rx="0"/>
+        <rect x="32" y="80" width="4" height="6" fill="#F8E3A1" rx="0"/>
+        <rect x="30" y="100" width="8" height="2" fill="#D4A017"/>
+        <rect x="32" y="102" width="4" height="2" fill="#D4A017"/>
+        <!-- Rays -->
+        <rect x="24" y="86" width="3" height="2" fill="#F8E3A1" opacity="0.6"/>
+        <rect x="41" y="86" width="3" height="2" fill="#F8E3A1" opacity="0.6"/>
+        <rect x="32" y="76" width="2" height="3" fill="#F8E3A1" opacity="0.6"/>
+      </g>
+
+      <!-- Legs -->
+      <rect class="leg-l" x="12" y="148" width="6" height="8" fill="#484F58"/>
+      <rect class="leg-r" x="22" y="148" width="6" height="8" fill="#484F58"/>
+
+      <!-- Feet -->
+      <rect class="leg-l" x="10" y="154" width="8" height="4" fill="#30363d"/>
+      <rect class="leg-r" x="22" y="154" width="8" height="4" fill="#30363d"/>
+    </g>
+  </g>
+
+  <!-- Title text -->
+  <text x="400" y="45" text-anchor="middle" font-family="monospace" font-size="20" font-weight="bold" fill="#E6EDF3" letter-spacing="2">
+    Rafael Murad
+  </text>
+  <text x="400" y="68" text-anchor="middle" font-family="monospace" font-size="12" fill="#7D8590" letter-spacing="1">
+    software engineer  ~  building things that move
+  </text>
+
+</svg>
